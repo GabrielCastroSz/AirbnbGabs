@@ -1,0 +1,247 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #000, #333);
+    color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    height: 28px;
+    width: 200px;
+}
+
+.login{
+    width: 28px;
+    height: 28px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ff5a5f;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.estadia {
+    position: relative;
+    height: 400px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: url('https://static.vecteezy.com/system/resources/thumbnails/008/874/740/original/blue-ocean-sand-beach-and-water-surface-texture-foamy-waves-with-sky-and-clouds-beautiful-tropical-beach-amazing-sandy-coastline-with-white-sea-waves-palms-turquoise-sea-background-atlantic-ocean-free-video.jpg') no-repeat center center/cover;
+    overflow: hidden;
+}
+
+.estadia::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.estadia .container {
+    position: relative;
+    z-index: 2;
+}
+
+.estadia h2 {
+    margin-bottom: 20px;
+    font-size: 3em;
+}
+
+.estadia form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.estadia form input,
+.estadia form button {
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    width: 13%;
+}
+
+.estadia form input[type="text"] {
+    flex: 1;
+    border: 1px solid #ddd;
+}
+
+.estadia form button {
+    background-color: #FF5A5F;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.estadia form button:hover {
+    background-color: #e04f56;
+}
+
+.propriedades {
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.propriedades h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    color: #333;
+}
+
+.propriedades-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.propriedades-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.propriedades-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.propriedades-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+}
+
+.propriedades-card h3 {
+    margin: 10px 0;
+    font-size: 1.5em;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+}
+
+a p {
+    color: gray;
+}
+
+
+footer {
+    background-color: #333; 
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-container {
+    max-width: 1200px; 
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    flex: 1;
+    margin: 10px;
+}
+
+.footer-section h3 {
+    margin-bottom: 15px;
+}
+
+.footer-section p {
+    margin: 5px 0;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 5px 0;
+}
+
+.footer-section ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #ddd;
+}
+
+.rede-social a {
+    color: white;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.rede-social a:hover {
+    color: #ddd;
+}
+
+footer hr {
+    border-color: #555;
+    margin: 20px 0;
+}
+
+footer p {
+    margin: 5px 0;
+}
