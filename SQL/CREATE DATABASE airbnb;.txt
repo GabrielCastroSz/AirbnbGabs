@@ -1,0 +1,83 @@
+CREATE DATABASE airbnb;
+USE airbnb;
+
+CREATE TABLE usuario(
+	idUsuario INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR (100) NOT NULL,
+    Email VARCHAR (100) NOT NULL UNIQUE,
+    Senha VARCHAR (100) NOT NULL
+);
+
+CREATE TABLE propriedade (
+	idPropriedade INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR (100) NOT NULL,
+    Cidade VARCHAR (100) NOT NULL,
+    Diaria DECIMAL (10,2) NOT NULL
+);
+
+CREATE TABLE reserva(
+	idReserva INT AUTO_INCREMENT PRIMARY KEY,
+    idUsuario INT,
+    idPropriedade INT,
+    DataInicio DATE NOT NULL,
+    DataFim DATE NOT NULL,
+    FOREIGN KEY (idUsuario) REFERENCES usuario (idUsuario),
+    FOREIGN KEY (idPropriedade) REFERENCES propriedade (idPropriedade)
+);
+
+CREATE TABLE imagem (
+	idImagem INT AUTO_INCREMENT PRIMARY KEY,
+    idPropriedade INT,
+    URL TEXT NOT NULL,
+    FOREIGN KEY (idPropriedade) REFERENCES propriedade (idPropriedade)
+);
+
+INSERT INTO usuario (Nome, Email, Senha) VALUES
+('Robinho Silva', 'robinhosilva@gmail.com', 'robinho123'),
+('Claudio Lima', 'claudiolima@hotmail.com', 'claudio123'),
+('Luiz Domingos', 'luizdomingos@outlook.com', 'luiz123'),
+('Lucca da Silva', 'luccasilva@yahoo.com', 'lucca123'),
+('Diego Rossi', 'diegorossi@gmail.com', 'robinho123');
+
+INSERT INTO propriedade (Nome, Cidade, Diaria) VALUES
+('Presídio de Muriaé', 'Muriaé', '350.00'),
+('Pousada Praia do Morro', 'Guarapari', '180.00'),
+('Joalpa Hotel', 'Juiz de Fora', '120.00'),
+('Xique Xique Palace', 'Xique-Xique', '218.00'),
+('Hotel GabeGabe', 'Pintópolis', '35.00');
+
+INSERT INTO reserva (idUsuario, idPropriedade, DataInicio, DataFim) VALUES
+(1, 1, '2024-08-03', '2037-10-03'),
+(2, 2, '2025-01-01', '2025-01-25'),
+(3, 3, '2022-05-02', '2024-10-03'),
+(4, 5, '2023-01-27', '2025-01-27'),
+(5, 4, '2024-12-30', '2025-01-02');
+
+INSERT INTO imagem (idPropriedade, URL) VALUES
+(1, 'https://s2.glbimg.com/RISvepwn7GObGtvGPR9nryATk4I=/1200x630/s.glbimg.com/jo/g1/f/original/2015/11/20/penitenciaria_ok.jpg'),
+(2, 'https://lh3.googleusercontent.com/p/AF1QipPj5F2J00oDIAnWeE4dkItyU8raVy-gsMfT8yGk=w287-h192-n-k-rw-no-v1'),
+(3, 'https://lh3.googleusercontent.com/p/AF1QipOlsOeNm0P3_zYWt9VQ14TjrYVIMAjN3E1KQe5E=s680-w680-h510'),
+(4, 'https://lh3.googleusercontent.com/p/AF1QipNDtxjGyyLZhfzoBFxeG77DkCIVg7mIXyEGNzc-=s680-w680-h510'),
+(5, 'https://lh3.googleusercontent.com/p/AF1QipPAtOUpPIwRu5DssA488mRlkLJ1NZo8CnYeffFs=s680-w680-h510');
+
+SELECT * FROM usuario WHERE nome LIKE '%Silva%';
+
+SELECT * FROM propriedade WHERE Cidade = 'Muriaé' AND Diaria > 300.00;
+
+SELECT * FROM  reserva
+JOIN propriedade ON Reserva.idPropriedade = propriedade.idPropriedade
+WHERE Cidade = 'Guarapari' AND DataInicio BETWEEN '2025-01-01' AND '2025-01-31';
+
+SELECT propriedade.Nome, COUNT(*) AS quantidadeReservas
+FROM Reserva
+Join propriedade ON Reserva.idPropriedade = propriedade.idPropriedade
+GROUP BY propriedade.Nome;
+
+SELECT * FROM propriedade ORDER BY Diaria DESC LIMIT 1;
+
+SELECT * FROM propriedade WHERE Cidade = 'Juiz de Fora' ORDER BY Diaria ASC LIMIT 1;
+
+UPDATE usuario SET Senha = 'Diego123' WHERE idUsuario = 5;
+
+INSERT INTO usuario (Nome, Email, Senha) VALUES ('Vasco da Gama', 'crvg@hotmail.com', 'romario123');
+DELETE FROM usuario WHERE Email = 'crvg@hotmail.com';
